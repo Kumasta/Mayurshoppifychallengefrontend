@@ -1,0 +1,23 @@
+.border {
+  border-bottom: 1px black solid;
+}
+
+.inventoryCard {
+  max-width: 30rem;
+  border: 1px solid;
+  border-color: blue;
+  margin: 10px;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.deleted {
+  text-decoration: line-through;
+}
