@@ -1,4 +1,4 @@
-# Shoppify Backend intern fall 2022 Challange
+# Shopify Backend intern fall 2022 Challenge - Frontend component
 
 This is the front end component of the backend challenge.
 
@@ -15,15 +15,15 @@ This is the front end component of the backend challenge.
 
 <img width="701" alt="image" src="https://user-images.githubusercontent.com/94964514/171675305-f5e13fd1-67a0-4d16-92c0-190763d1903e.png">
 
-Top of page, user can add new docuemnt to invenrtory array.
+Top of the page, users can add new documents to the inventory array.
 
-Each inventroy item will be listed below in a card.
+Each inventory item will be listed below in a card.
 
-Each item can be deleted, edited, increase of decrease stock (>= 0) and add comments.
+Each item can be deleted, edited, increased or decreased stock (>= 0) and add comments.
 
-Each comment can be 'soft' deleted, a boolean field will switch from flase to true if delete button is pressed and texted will have a stike through it. 
+Each comment can be 'soft' deleted, a boolean field will switch from false to true if the delete button is pressed and text will have a strike through it. 
 
-To 'retore' comment, delete button will change to 'Restore' to undo. 
+To 'restore' comment, the delete button will change to 'Restore' to undo. 
 
 
 ## Contact
@@ -33,3 +33,4 @@ Social - https://www.linkedin.com/in/mayur-kumar-dev/
 Email - mayurkumardev@googlemail.com
 
 Github: https://github.com/Kumasta
+
