@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './App.css'
 
 
 const CommentCard = ({ comment, i, item, updateInvetory, setUpdateInventory }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/inventory/${item.id}/comments/${comment.id}`)
+      await axios.delete(`/api/inventory/${item.id}/comments/${comment.id}`)
       setUpdateInventory(!updateInvetory)
     } catch (err) {
       console.log(err)
@@ -16,7 +15,7 @@ const CommentCard = ({ comment, i, item, updateInvetory, setUpdateInventory }) =
 
   const handleRestore = async () => {
     try {
-      await axios.patch(`http://localhost:4000/api/inventory/${item.id}/comments/${comment.id}`)
+      await axios.patch(`/api/inventory/${item.id}/comments/${comment.id}`)
       setUpdateInventory(!updateInvetory)
     } catch (err) {
       console.log(err)
@@ -54,7 +53,7 @@ const EditInventory = ({ item, updateInvetory, setUpdateInventory, setIsEdit }) 
 
   const handleSubmit = async () => {
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/inventory/${item.id}`,
+      const { data } = await axios.put(`/api/inventory/${item.id}`,
         newInventory
       )
       console.log(data)
@@ -103,7 +102,7 @@ const InventoryCard = ({ item, order, updateInvetory, setUpdateInventory }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/inventory/${item.id}`)
+      await axios.delete(`/api/inventory/${item.id}`)
       setUpdateInventory(!updateInvetory)
     } catch (err) {
       console.log(err)
@@ -112,7 +111,7 @@ const InventoryCard = ({ item, order, updateInvetory, setUpdateInventory }) => {
 
   const updateStock = async () => {
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/inventory/${item.id}`,
+      const { data } = await axios.put(`/api/inventory/${item.id}`,
         { stock: stockCount }
       )
       console.log(data)
@@ -131,7 +130,7 @@ const InventoryCard = ({ item, order, updateInvetory, setUpdateInventory }) => {
   const handleNewComment = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post(`http://localhost:4000/api/inventory/${item.id}/comments`,
+      const { data } = await axios.post(`/api/inventory/${item.id}/comments`,
         { text: commentBody }
       )
       setUpdateInventory(!updateInvetory)
@@ -182,7 +181,7 @@ const InventoryForm = ({ updateInvetory, setUpdateInventory }) => {
 
   const handleSubmit = async () => {
     try {
-      const { data } = await axios.post(`http://localhost:4000/api/inventory`,
+      const { data } = await axios.post(`/api/inventory`,
         newInventory
       )
       console.log(data)
@@ -213,24 +212,7 @@ const InventoryForm = ({ updateInvetory, setUpdateInventory }) => {
   )
 }
 
-const InventoryList = ({ updateInvetory, setUpdateInventory }) => {
-
-  const [invetoryList, setInventory] = useState(null)
-  const [isError, setIsError] = useState(false)
-
-  useEffect(() => {
-    const getInventory = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:4000/api/inventory')
-        setInventory(data)
-        console.log(data)
-      } catch (err) {
-        console.log(err)
-        setIsError(true)
-      }
-    }
-    getInventory()
-  }, [updateInvetory])
+const InventoryList = ({ updateInvetory, setUpdateInventory, invetoryList, isError }) => {
 
 
   return (
@@ -247,14 +229,68 @@ const InventoryList = ({ updateInvetory, setUpdateInventory }) => {
   )
 }
 
+const DeletedInventoryList = ({ updateInvetory, setUpdateInventory, deletedInventoryList }) => {
+
+  return (
+    <div>
+      <h4>Delted Inventory</h4>
+      <ol>
+        {deletedInventoryList && deletedInventoryList.map((item, i) => {
+          return (
+            <DeletedListItem key={i} updateInvetory={updateInvetory} setUpdateInventory={setUpdateInventory} item={item} />
+          )
+        })}
+      </ol>
+    </div>
+  )
+}
+
+const DeletedListItem = ({ updateInvetory, setUpdateInventory, item }) => {
+
+  const handleRestore = async () => {
+    console.log(item)
+    try {
+      await axios.patch(`/api/inventory/${item.id}`)
+      setUpdateInventory(!updateInvetory)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return (
+    <li>
+      {item.name} - {item.deletedComment.slice(0, 42)} <button onClick={handleRestore}>Restore</button>
+    </li>
+  )
+}
+
 
 const App = () => {
   const [updateInvetory, setUpdateInventory] = useState(false)
+  const [invetoryList, setInventory] = useState(null)
+  const [deletedInventoryList, setDeletedInventoryList] = useState(null)
+  const [isError, setIsError] = useState(false)
+
+  useEffect(() => {
+    const getInventory = async () => {
+      try {
+        const { data } = await axios.get('/api/inventory')
+        setInventory(data.filter(item => item.deleted === false))
+        setDeletedInventoryList(data.filter(item => item.deleted === true))
+        console.log(data)
+      } catch (err) {
+        console.log(err)
+        setIsError(true)
+      }
+    }
+    getInventory()
+  }, [updateInvetory])
 
   return (
     <>
       <InventoryForm updateInvetory={updateInvetory} setUpdateInventory={setUpdateInventory} />
-      <InventoryList updateInvetory={updateInvetory} setUpdateInventory={setUpdateInventory} />
+      <InventoryList updateInvetory={updateInvetory} setUpdateInventory={setUpdateInventory} invetoryList={invetoryList} isError={isError} />
+      <DeletedInventoryList updateInvetory={updateInvetory} setUpdateInventory={setUpdateInventory} deletedInventoryList={deletedInventoryList} />
     </>
   );
 }
