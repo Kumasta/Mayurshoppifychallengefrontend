@@ -13,13 +13,17 @@ This is the front end component of the backend challenge.
 3. Go to https://replit.com/@MayurKumar4/Mayurshoppifychallengefrontend and press start/play
 4. Web app page should load and user can now use crud functionality of the API
 
-<img width="701" alt="image" src="https://user-images.githubusercontent.com/94964514/171675305-f5e13fd1-67a0-4d16-92c0-190763d1903e.png">
+<img width="641" alt="image" src="https://user-images.githubusercontent.com/94964514/173254499-17fefa98-8bb5-4669-be6c-266b50ae23b5.png">
 
 Top of the page, users can add new documents to the inventory array.
 
 Each inventory item will be listed below in a card.
 
-Each item can be deleted, edited, increased or decreased stock (>= 0) and add comments.
+Each item can be (soft) deleted, edited, increased or decreased stock (>= 0) and add comments.
+
+Deleted Items are re-listed at the bottom of the page in a 'Deleted' list with the date time commented automaticaly.
+
+To 'restore' inventory item, click the restor button to return it to the main list with all content. 
 
 Each comment can be 'soft' deleted, a boolean field will switch from false to true if the delete button is pressed and text will have a strike through it. 
 
