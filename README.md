@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Shopify Backend intern fall 2022 Challenge - Frontend component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the front end component of the backend challenge.
 
-## Available Scripts
+### Link to Replit: https://replit.com/@MayurKumar4/Mayurshoppifychallengefrontend
 
-In the project directory, you can run:
+## Link to backend repo: https://github.com/Kumasta/MayurShopifyChallenge
 
-### `yarn start`
+## Running the app in Replit:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Open backend Replit here: https://replit.com/@MayurKumar4/MayurShopifyChallenge
+2. Click on start/play button and wait until you see '🚀 Server listening on port 4000' printed in the consol.
+3. Go to https://replit.com/@MayurKumar4/Mayurshoppifychallengefrontend and press start/play
+4. Web app page should load and user can now use crud functionality of the API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img width="701" alt="image" src="https://user-images.githubusercontent.com/94964514/171675305-f5e13fd1-67a0-4d16-92c0-190763d1903e.png">
 
-### `yarn test`
+Top of the page, users can add new documents to the inventory array.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each inventory item will be listed below in a card.
 
-### `yarn build`
+Each item can be deleted, edited, increased or decreased stock (>= 0) and add comments.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Each comment can be 'soft' deleted, a boolean field will switch from false to true if the delete button is pressed and text will have a strike through it. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To 'restore' comment, the delete button will change to 'Restore' to undo. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Contact
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Social - https://www.linkedin.com/in/mayur-kumar-dev/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Email - mayurkumardev@googlemail.com
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Github: https://github.com/Kumasta
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
